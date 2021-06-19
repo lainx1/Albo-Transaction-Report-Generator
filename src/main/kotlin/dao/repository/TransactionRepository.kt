@@ -1,7 +1,7 @@
 package dao.repository
 
 import dao.entity.Transaction
-import java.time.Month
+import dao.repository.filters.FilterTransactionsDTO
 
 /**
  * This class contains the Transaction repository.
@@ -12,15 +12,16 @@ interface TransactionRepository {
     /**
      * Retrieve all transactions.
      *
-     * @return all transactions.
+     * @return transactions given filters.
      */
-    fun getTransactions(): List<Transaction>
-
+    fun findAll(): List<Transaction>
 
     /**
-     * Retrieve all transactions by specified month.
-     * @return transactions by month.
+     * Retrieve transactions given param.
+     * @param filterTransactionsDTO filter for transactions.
+     *
+     * @return transactions given filters.
      */
-    fun getTransactionsByMonth(month: Month): List<Transaction>
+    fun findAll(filterTransactionsDTO: FilterTransactionsDTO): List<Transaction>
 
 }
