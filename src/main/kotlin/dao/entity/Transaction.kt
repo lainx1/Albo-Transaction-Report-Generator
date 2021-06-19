@@ -1,5 +1,6 @@
 package dao.entity
 
+import com.squareup.moshi.Json
 import dao.entity.enum.Category
 import dao.entity.enum.Operation
 import dao.entity.enum.Status
@@ -14,7 +15,8 @@ import java.util.*
 data class Transaction(
     val amount: BigDecimal,
     val category: Category,
-    val creation_date: Date,
+    @Json(name = "creation_date")
+    val creationDate: Date,
     val description: String,
     val operation: Operation,
     val status: Status,

@@ -59,7 +59,7 @@ class TransactionRepositoryImpl : TransactionRepository {
             transactions = transactions.stream().filter { it.operation == filterByOperation}.collect(Collectors.toList())
 
         if(filterByMonth != null)
-            transactions = transactions.stream().filter { DateUtils.getMonth(it.creation_date) == filterByMonth }.collect(Collectors.toList())
+            transactions = transactions.stream().filter { DateUtils.getMonth(it.creationDate) == filterByMonth }.collect(Collectors.toList())
 
         if(filterByCategory != null)
             transactions = transactions.stream().filter { it.category == filterByCategory }.collect(Collectors.toList())
