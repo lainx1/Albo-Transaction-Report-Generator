@@ -4,10 +4,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dao.entity.Transaction
-import dao.entity.adapters.CategoryAdapter
-import dao.entity.adapters.DateAdapter
-import dao.entity.adapters.OperationAdapter
-import dao.entity.adapters.StatusAdapter
+import dao.entity.adapters.*
 import dao.repository.TransactionRepository
 import dao.repository.filters.FilterTransactionsDTO
 import utils.DateUtils
@@ -35,6 +32,7 @@ class TransactionRepositoryImpl : TransactionRepository {
             .add(OperationAdapter())
             .add(StatusAdapter())
             .add(DateAdapter())
+            .add(BigDecimalAdapter())
             .build()
 
         val listOfTransaction: ParameterizedType = Types.newParameterizedType(List::class.java, Transaction::class.java)

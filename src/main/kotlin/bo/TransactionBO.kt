@@ -8,7 +8,8 @@ import dto.MonthlyTransactionReportDTO
 import utils.NumberUtils
 import java.math.BigDecimal
 import java.time.Month
-import java.util.stream.Collectors
+import java.time.format.TextStyle
+import java.util.*
 
 /**
  * This class contains the busyness object for Transactions.
@@ -27,7 +28,7 @@ class TransactionBO {
      */
     fun generateReport(){
         for(month in Month.values()){
-            generateReportByMonth(month = month).toString()
+            println(generateReportByMonth(month = month).toString())
         }
     }
 
@@ -71,6 +72,7 @@ class TransactionBO {
 
         return MonthlyTransactionReportDTO
             .Builder()
+            .month(month = month.getDisplayName(TextStyle.FULL, Locale("es", "MX")))
             .pendingTransactions(pendingTransactions = pendingTransactions.size)
             .rejectedTransactions(rejectedTransactions = rejectedTransactions.size)
             .incomeAmount(incomeAmount = NumberUtils.convertToDecimals(number = incomeAmount))

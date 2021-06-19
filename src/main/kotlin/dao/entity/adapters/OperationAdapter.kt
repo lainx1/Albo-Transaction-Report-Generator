@@ -20,6 +20,6 @@ class OperationAdapter {
     @FromJson
     fun stringToOperation(jsonReader: JsonReader, delegate: JsonAdapter<Operation>): Operation? {
         val value = jsonReader.nextString()
-        return if (value.startsWith("in")) Operation.IN else delegate.fromJsonValue(value)
+        return delegate.fromJsonValue(value)
     }
 }

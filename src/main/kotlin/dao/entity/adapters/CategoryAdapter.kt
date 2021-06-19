@@ -20,6 +20,6 @@ class CategoryAdapter {
     @FromJson
     fun stringToCategory(jsonReader: JsonReader, delegate: JsonAdapter<Category>): Category? {
         val value = jsonReader.nextString()
-        return if (value.startsWith("Alimentacion")) Category.ALIMENTATION else delegate.fromJsonValue(value)
+        return delegate.fromJsonValue(value)
     }
 }

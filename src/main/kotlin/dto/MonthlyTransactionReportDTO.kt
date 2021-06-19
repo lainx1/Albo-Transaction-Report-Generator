@@ -2,6 +2,7 @@ package dto
 
 import utils.NumberUtils
 import java.math.BigDecimal
+import java.util.*
 
 /**
  * This class contains the representation of monthly transaction report.
@@ -38,10 +39,11 @@ class MonthlyTransactionReportDTO private constructor(
         )
     }
 
-    override fun toString(): String = "$month:\n" +
-            "\t$pendingTransactions transacciones pendientes" +
-            "\t$rejectedTransactions bloqueadas\n" +
-            "$${NumberUtils.convertToDecimals(number = incomeAmount ?: BigDecimal.ZERO)} ingresos\n" +
-            "$${NumberUtils.convertToDecimals(number = outcomeAmount ?: BigDecimal.ZERO)} gastos"
+    override fun toString(): String = "${month!!.capitalize(Locale("es", "MX"))}:\n" +
+            "\t$pendingTransactions transacciones pendientes\n" +
+            "\t$rejectedTransactions bloqueadas\n\n" +
+            "\t$${NumberUtils.convertToDecimals(number = incomeAmount ?: BigDecimal.ZERO)} ingresos\n\n" +
+            "\t$${NumberUtils.convertToDecimals(number = outcomeAmount ?: BigDecimal.ZERO)} gastos\n" +
+            "\n"
 
 }

@@ -20,6 +20,6 @@ class StatusAdapter {
     @FromJson
     fun stringToStatus(jsonReader: JsonReader, delegate: JsonAdapter<Status>): Status? {
         val value = jsonReader.nextString()
-        return if (value.startsWith("rejected")) Status.PENDING else delegate.fromJsonValue(value)
+        return delegate.fromJsonValue(value)
     }
 }
