@@ -29,5 +29,5 @@ class CategoryReportDTO private constructor(
         )
     }
 
-    override fun toString(): String = "${category!!.value.capitalize(Locale("es", "MX"))} \t\t ${NumberUtils.convertToDecimals(number = amount!!)}"
+    override fun toString(): String = "${category!!.value.capitalize(Locale("es", "MX"))} \t\t %${NumberUtils.convertToDecimals(number = amount!!)}"
 }

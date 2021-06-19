@@ -13,7 +13,7 @@ import java.util.*
 object DateUtils {
 
     var MEXICO_ZONE = "America/Mexico_City"
-    var pattern = "dd/MM/yyyy"
+    var pattern = "MM/dd/yyyy"
 
 
     /**
