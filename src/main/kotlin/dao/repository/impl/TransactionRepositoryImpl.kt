@@ -9,10 +9,13 @@ import dao.entity.enum.adapters.DateAdapter
 import dao.entity.enum.adapters.OperationAdapter
 import dao.entity.enum.adapters.StatusAdapter
 import dao.repository.TransactionRepository
+import utils.DateUtils
 import java.io.File
 import java.io.InputStream
 import java.lang.reflect.ParameterizedType
+import java.time.Month
 import java.util.*
+import java.util.stream.Collectors
 
 /**
  * This class contains the implementation for repository.
@@ -39,6 +42,10 @@ class TransactionRepositoryImpl  : TransactionRepository{
 
 
         return Optional.ofNullable(jsonAdapter.fromJson(transactionsJson)).orElse(mutableListOf())
+    }
+
+    override fun getTransactionsByMonth(month: Month): List<Transaction> {
+        return getTransactions().stream().filter { DateUtils.getMonth(date = it.creation_date) == month }.collect(Collectors.toList())
     }
 
 }

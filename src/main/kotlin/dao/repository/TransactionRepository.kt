@@ -1,6 +1,7 @@
 package dao.repository
 
 import dao.entity.Transaction
+import java.time.Month
 
 /**
  * This class contains the Transaction repository.
@@ -13,6 +14,13 @@ interface TransactionRepository {
      *
      * @return all transactions.
      */
-    fun getTransactions() : List<Transaction>
+    fun getTransactions(): List<Transaction>
+
+
+    /**
+     * Retrieve all transactions by specified month.
+     * @return transactions by month.
+     */
+    fun getTransactionsByMonth(month: Month): List<Transaction>
 
 }

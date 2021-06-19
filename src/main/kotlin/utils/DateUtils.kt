@@ -2,6 +2,7 @@ package utils
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat
+import java.time.Month
 import java.time.ZoneId
 import java.util.*
 
@@ -13,6 +14,7 @@ object DateUtils {
 
     var MEXICO_ZONE = "America/Mexico_City"
     var pattern = "dd/MM/yyyy"
+
 
     /**
      * Transform string to date given pattern.
@@ -44,4 +46,11 @@ object DateUtils {
 
         return dateFormat.format(date)
     }
+
+    /**
+     * Retrieve month given date 1 -12.
+     * @param date to get moth.
+     * @return int month value.
+     */
+    fun getMonth(date: Date) : Month = date.toInstant().atZone(ZoneId.of(MEXICO_ZONE)).month
 }
