@@ -30,7 +30,6 @@ dependencies {
     //Jackson
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.3")
 
-
 }
 
 tasks.test {
