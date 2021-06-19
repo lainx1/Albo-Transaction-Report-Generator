@@ -4,10 +4,10 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dao.entity.Transaction
-import dao.entity.enum.adapters.CategoryAdapter
-import dao.entity.enum.adapters.DateAdapter
-import dao.entity.enum.adapters.OperationAdapter
-import dao.entity.enum.adapters.StatusAdapter
+import dao.entity.adapters.CategoryAdapter
+import dao.entity.adapters.DateAdapter
+import dao.entity.adapters.OperationAdapter
+import dao.entity.adapters.StatusAdapter
 import dao.repository.TransactionRepository
 import dao.repository.filters.FilterTransactionsDTO
 import utils.DateUtils

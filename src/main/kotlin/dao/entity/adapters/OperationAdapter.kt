@@ -1,4 +1,4 @@
-package dao.entity.enum.adapters
+package dao.entity.adapters
 
 import com.squareup.moshi.FromJson
 import com.squareup.moshi.JsonAdapter

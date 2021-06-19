@@ -26,13 +26,9 @@ class TransactionBO {
      *
      */
     fun generateReport(){
-
         for(month in Month.values()){
-
-
-
+            generateReportByMonth(month = month).toString()
         }
-
     }
 
     /**
