@@ -1,9 +1,11 @@
 package bo
 
+import dao.entity.enum.Category
 import dao.entity.enum.Operation
 import dao.entity.enum.Status
 import dao.repository.filters.FilterTransactionsDTO
 import dao.repository.impl.TransactionRepositoryImpl
+import dto.CategoryReportDTO
 import dto.MonthlyTransactionReportDTO
 import utils.NumberUtils
 import java.math.BigDecimal
@@ -70,6 +72,46 @@ class TransactionBO {
             .build()
         ).stream().map { it.amount }.forEach { outcomeAmount = outcomeAmount.add(it) }
 
+        val categoryReports = mutableListOf<CategoryReportDTO>()
+
+        for (category in Category.values()){
+
+            var categoryTotalAmount = BigDecimal.ZERO
+            var categoryOutAmount = BigDecimal.ZERO
+
+            transactionRepository.findAll(FilterTransactionsDTO
+                .Builder()
+                .category(category = category)
+                .month(month)
+                .build()
+            ).stream().map { it.amount }.forEach { categoryTotalAmount = categoryTotalAmount.add(it) }
+
+            transactionRepository.findAll(FilterTransactionsDTO
+                .Builder()
+                .category(category = category)
+                .operation(Operation.OUT)
+                .month(month)
+                .build()
+            ).stream().map { it.amount }.forEach { categoryOutAmount = categoryOutAmount.add(it) }
+
+            var percentage = (categoryTotalAmount.multiply(categoryOutAmount)).divide(BigDecimal("100.0"))
+
+            if (categoryTotalAmount > BigDecimal.ZERO)
+
+            categoryReports.add(CategoryReportDTO
+                .Builder()
+                .category(category)
+                .amount(percentage)
+                .build()
+            )
+        }
+
+        with(categoryReports){
+            this.sortBy { it.amount }
+            this.reverse()
+        }
+
+
         return MonthlyTransactionReportDTO
             .Builder()
             .month(month = month.getDisplayName(TextStyle.FULL, Locale("es", "MX")))
@@ -77,6 +119,7 @@ class TransactionBO {
             .rejectedTransactions(rejectedTransactions = rejectedTransactions.size)
             .incomeAmount(incomeAmount = NumberUtils.convertToDecimals(number = incomeAmount))
             .outcomeAmount(outcomeAmount = NumberUtils.convertToDecimals(number = outcomeAmount))
+            .categoryReports(categoryReports = categoryReports)
             .build()
 
     }

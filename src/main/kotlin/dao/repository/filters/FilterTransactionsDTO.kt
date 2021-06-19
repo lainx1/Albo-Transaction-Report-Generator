@@ -26,7 +26,7 @@ class FilterTransactionsDTO private constructor(
         fun status(status: Status) = apply { this.status = status }
         fun operation(operation: Operation) = apply { this.operation = operation }
         fun month(month: Month) = apply { this.month = month }
-        fun category(category: CharCategory) = apply { this.month = month }
+        fun category(category: Category) = apply { this.category = category }
 
         fun build() = FilterTransactionsDTO(
             status = status,

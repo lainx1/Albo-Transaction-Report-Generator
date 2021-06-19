@@ -6,23 +6,23 @@ import com.squareup.moshi.Json
  * This class contains the category enum.
  * @author Ivan Martinez Jimenez.
  */
-enum class Category {
+enum class Category(val value : String) {
 
     @Json(name = "Alimentacion")
-    ALIMENTATION,
+    ALIMENTATION("Alimentacion"),
     @Json(name = "Hogar")
-    HOME,
+    HOME("Hogar"),
     @Json(name = "Entretenimiento")
-    ENTERTAINMENT,
+    ENTERTAINMENT("Entretenimiento"),
     @Json(name = "Servicios")
-    SERVICES,
+    SERVICES("Servicios"),
     @Json(name = "Transferencias")
-    TRANSFERS,
+    TRANSFERS("Transferencias"),
     @Json(name = "Retiros en cajero")
-    WITHDRAWALS,
+    WITHDRAWALS("Retiros en cajero"),
     @Json(name = "Otros")
-    OTHERS,
+    OTHERS("Otros"),
     @Json(name = "Transporte")
-    TRANSPORT;
+    TRANSPORT("Transporte");
 
 }

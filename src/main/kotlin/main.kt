@@ -1,11 +1,8 @@
-import dao.repository.impl.TransactionRepositoryImpl
-import java.time.Month
+import bo.TransactionBO
 
 fun main(args: Array<String>) {
 
-    val transactionRepository = TransactionRepositoryImpl()
+    val transactionsBO = TransactionBO()
+    transactionsBO.generateReport()
 
-    transactionRepository.findAll()
-
-    transactionRepository.findTransactionsByMonth(Month.MARCH)
 }
