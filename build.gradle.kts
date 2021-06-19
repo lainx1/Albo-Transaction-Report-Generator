@@ -24,9 +24,6 @@ dependencies {
     implementation("com.squareup.moshi:moshi:1.12.0")
     implementation("com.squareup.moshi:moshi-kotlin:1.12.0")
 
-    //Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1")
-
     //Jackson
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.3")
 
