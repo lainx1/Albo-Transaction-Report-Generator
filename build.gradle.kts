@@ -27,6 +27,9 @@ dependencies {
     //Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1")
 
+    //Jackson
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.3")
+
 
 }
 
