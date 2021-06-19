@@ -40,6 +40,9 @@ class TransactionBO {
      */
     private fun generateReportByMonth(month: Month): MonthlyTransactionReportDTO {
 
+        /**
+         * Pending transactions.
+         */
         val pendingTransactions = transactionRepository.findAll(
             filters = FilterTransactionsDTO
                 .Builder()
@@ -49,6 +52,9 @@ class TransactionBO {
         )
 
 
+        /**
+         * Rejected transactions.
+         */
         val rejectedTransactions = transactionRepository.findAll(
             filters = FilterTransactionsDTO
                 .Builder()
@@ -57,6 +63,9 @@ class TransactionBO {
                 .build()
         )
 
+        /**
+         * Income amount
+         */
         var incomeAmount = BigDecimal.ZERO
         transactionRepository.findAll(
             filters = FilterTransactionsDTO
@@ -67,6 +76,9 @@ class TransactionBO {
                 .build()
         ).stream().map { it.amount }.forEach { incomeAmount = incomeAmount.add(it) }
 
+        /**
+         * Outcome amount
+         */
         var outcomeAmount = BigDecimal.ZERO
         transactionRepository.findAll(
             filters = FilterTransactionsDTO
@@ -77,6 +89,9 @@ class TransactionBO {
                 .build()
         ).stream().map { it.amount }.forEach { outcomeAmount = outcomeAmount.add(it) }
 
+        /**
+         * Category report.
+         */
         val categoryReports = mutableListOf<CategoryReportDTO>()
 
         for (category in Category.values()) {
@@ -109,6 +124,9 @@ class TransactionBO {
                 )
         }
 
+        /**
+         * Sort category bigger to low
+         */
         with(categoryReports) {
             this.sortBy { it.amount }
             this.reverse()
