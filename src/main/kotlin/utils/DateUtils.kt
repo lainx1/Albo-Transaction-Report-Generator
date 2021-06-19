@@ -48,7 +48,7 @@ object DateUtils {
     }
 
     /**
-     * Retrieve month given date 1 -12.
+     * Retrieve month given date.
      * @param date to get moth.
      * @return int month value.
      */
